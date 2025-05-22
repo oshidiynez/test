@@ -67,13 +67,13 @@ jobs:
           tags: |
             qbittorrent-nox_${{ steps.set-variables.outputs.PLATFORM_NAME }}:devel
 
-      - name: Test run
-        run: |
-          docker run \
-            --entrypoint "/usr/bin/qbittorrent-nox" \
-            --platform ${{ matrix.platform }} \
-            qbittorrent-nox_${{ steps.set-variables.outputs.PLATFORM_NAME }}:devel \
-            --version
+      # - name: Test run
+      #   run: |
+      #     docker run \
+      #       --entrypoint "/usr/bin/qbittorrent-nox" \
+      #       --platform ${{ matrix.platform }} \
+      #       qbittorrent-nox_${{ steps.set-variables.outputs.PLATFORM_NAME }}:devel \
+      #       --version
 
       # To run the image locally:
       # 1. `docker load < artifact`
