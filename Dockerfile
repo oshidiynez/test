@@ -90,6 +90,3 @@ RUN \
     $LIBBT_CMAKE_FLAGS && \
   cmake --build build -j $(nproc) && \
   cmake --install build
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["/sbin/tini", "-g", "--", "/entrypoint.sh"]
