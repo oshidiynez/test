@@ -41,7 +41,7 @@ RUN \
 # https://git.alpinelinux.org/aports/tree/community/libtorrent-rasterbar/APKBUILD
 # https://git.alpinelinux.org/aports/tree/community/qbittorrent/APKBUILD
 RUN \
-  apk add \
+  apk --no-cache add --virtual build-dependencies \
     cmake \
     git \
     g++ \
