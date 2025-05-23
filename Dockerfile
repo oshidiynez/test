@@ -6,7 +6,7 @@ RUN \
 
 # run-time dependencies
 RUN \
-  apk --no-cache add \
+  apk --no-cache add --virtual build-dependencies \
     7zip \
     bash \
     curl \
@@ -18,8 +18,7 @@ RUN \
     qt6-qtbase-sqlite \
     tini \
     tzdata \
-    zlib \
-    --virtual build-dependencies
+    zlib
 
 # image for building
 FROM base AS builder
