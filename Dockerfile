@@ -1,27 +1,5 @@
-# create an up-to-date base image for everything
-FROM alpine:latest AS base
-
-RUN \
-  apk --no-cache --update-cache upgrade
-
-# run-time dependencies
-RUN \
-  apk --no-cache add --virtual build-dependencies \
-    7zip \
-    bash \
-    curl \
-    doas \
-    libcrypto3 \
-    libssl3 \
-    python3 \
-    qt6-qtbase \
-    qt6-qtbase-sqlite \
-    tini \
-    tzdata \
-    zlib
-
 # image for building
-FROM base AS builder
+FROM alpine:latest
 
 ARG QBT_VERSION \
     BOOST_VERSION_MAJOR="1" \
