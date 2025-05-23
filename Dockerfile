@@ -74,4 +74,5 @@ RUN \
   rm -rf /tmp/*
 
 FROM alpine:latest
-COPY --from=libtorrent-builder /usr/lib/ /usr/lib
+COPY --from=libtorrent-builder /usr/lib/libtorrent-rasterbar.a /usr/lib
+COPY --from=libtorrent-builder /boost /
