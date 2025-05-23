@@ -1,5 +1,5 @@
 # image for building
-FROM alpine:latest
+FROM alpine:latest AS libtorrent-builder
 
 ARG QBT_VERSION \
     BOOST_VERSION_MAJOR="1" \
@@ -62,7 +62,6 @@ RUN \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DBOOST_ROOT=/boost/lib/cmake \
     -Ddeprecated-functions=OFF \
@@ -73,3 +72,6 @@ RUN \
   cd && \
   apk del --purge build-dependencies && \
   rm -rf /tmp/*
+
+FROM alpine:latest
+COPY --from=libtorrent-builder /usr/lib/ /usr/lib
