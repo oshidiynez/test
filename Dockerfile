@@ -18,7 +18,8 @@ RUN \
     qt6-qtbase-sqlite \
     tini \
     tzdata \
-    zlib
+    zlib \
+    --virtual build-dependencies
 
 # image for building
 FROM base AS builder
@@ -89,4 +90,8 @@ RUN \
     -Ddeprecated-functions=OFF \
     $LIBBT_CMAKE_FLAGS && \
   cmake --build build -j $(nproc) && \
-  cmake --install build
+  cmake --install build && \
+  # Remove temp files
+  cd && \
+  apk del --purge build-dependencies && \
+  rm -rf /tmp/*
