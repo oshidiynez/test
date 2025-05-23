@@ -59,9 +59,10 @@ RUN \
     -B build \
     -G Ninja \
     -DBUILD_SHARED_LIBS=OFF \
-    -DCMAKE_BUILD_TYPE=MinSizeRel \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_STANDARD=20 \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DBOOST_ROOT=/boost/lib/cmake \
     -Ddeprecated-functions=OFF \
